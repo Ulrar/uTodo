@@ -149,7 +149,9 @@ open%shared Ulist_btn
            {uuid  = (Uuidm.to_string (Uuidm.v `V4));
             subList = false;
             label = "";
-            status = false})
+            status = false
+           }
+          )
           (snd ~%rtasks)
         )
         ] in

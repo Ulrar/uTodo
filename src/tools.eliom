@@ -1,7 +1,7 @@
 open Services
 open%shared Ulist_t
 
-let rec buildDirectoryListing d res = 
+let rec buildDirectoryListing d res =
   Lwt.catch (fun () ->
     let%lwt cur = Lwt_unix.readdir d in
     if cur <> "." && cur <> ".."

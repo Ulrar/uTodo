@@ -7,6 +7,9 @@
 *.cmx
 *.cmxs
 *.cmxa
+*.type_mli
+.depend
+utodo.js
 
 # ocamlbuild working directory
 _build/
