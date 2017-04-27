@@ -6591,3 +6591,4 @@ button.close {
 
 .row-hover {background: #fff;}
 .row-hover:hover {background: #f5f5f5;}
+.button {cursor:pointer}

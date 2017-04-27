@@ -22,11 +22,8 @@ open%shared Ulist_btn
             (saveTask rtasks category listName t.uuid t.subList lbl t.status)
         )
       ] in
-      let confirm = Raw.a
-        ~a:[a_onclick saveEdit; a_href (Raw.uri_of_string "#")]
-        [img ~alt:("Confirm")
-        ~src:(make_uri ~service:(Eliom_service.static_dir ())
-        ["images"; "confirm.ico"]) ()]
+      let confirm = img ~a:[a_onclick saveEdit; a_class ["button"]] ~alt:("Confirm")
+          ~src:(make_uri ~service:(Eliom_service.static_dir ()) ["images"; "confirm.ico"]) ()
       in
       let (cln, cll) = calcClassFromNL nl in
       div ~a:[a_class ["row"]]
@@ -156,11 +153,8 @@ open%shared Ulist_btn
         )
         ] in
         let btnNewTask = Eliom_content.Html.D.(div
-          [Raw.a
-             ~a:[a_onclick addNewTask; a_href (Raw.uri_of_string "#")]
-             [img ~a:[a_class ["center-block"]] ~alt:("add")
-                ~src:(make_uri ~service:(Eliom_service.static_dir ())
-                        ["images"; "add.ico"]) ()]])
+          [img ~a:[a_onclick addNewTask; a_class ["center-block"; "button"]] ~alt:("add")
+          ~src:(make_uri ~service:(Eliom_service.static_dir ()) ["images"; "add.ico"]) ()])
         in
       let tab = Eliom_content.Html.R.div ~a:[a_class ["container-fluid"]] cnt in
       Lwt.return (tab, btnNewTask)
