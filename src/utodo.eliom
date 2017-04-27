@@ -15,9 +15,10 @@ let () =
     ~service:category_service
     (fun category () ->
       let%lwt lists = genLists category in
+      let newList = newListBtn category in
       template category Eliom_content.Html.F.
       (
-        [h1 ~a:[a_class ["text-center"]] [pcdata category]; lists])
+        [h1 ~a:[a_class ["text-center"]] [pcdata category]; lists; newList])
       )
 
 let () =

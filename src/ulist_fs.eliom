@@ -1,6 +1,5 @@
 open Tools
 open Services
-open Category
 open%shared Ulist_t
 open%shared Ulist_j
 
@@ -14,8 +13,10 @@ let%server readUList path =
     let%lwt f = Lwt_io.open_file Lwt_io.Input path in
     let s = Lwt_io.read_lines f in
     let%lwt res = Lwt_stream.fold (^) s "" in
-    let ulist = Ulist_j.ulist_of_string res in
-    Lwt.return (Some ulist)
+    try let ulist = Ulist_j.ulist_of_string res in
+      Lwt.return (Some ulist)
+    with
+      _ -> Lwt.return (Some {emails = []; tasks = []})
   else
     Lwt.return None
 
@@ -48,7 +49,10 @@ let%server saveTask (category, listName, nUuid, nSubList, nLabel, nStatus) =
       let tasks' = List.mapi (fun i x ->
         if i = n
         then
-          {uuid = nUuid; subList = nSubList; label = nLabel; status = nStatus} else x) l.tasks
+          {uuid = nUuid; subList = nSubList; label = nLabel; status = nStatus}
+        else
+          x
+        ) l.tasks
       in
       let l' = {emails = l.emails; tasks = tasks'} in
       let%lwt _ = writeUList category listName l' in
@@ -72,5 +76,3 @@ let%server deleteTask (category, listName, id) =
     let l' = ({emails = l.emails; tasks = tasks'}) in
     let%lwt _ = writeUList category listName l' in
     Lwt.return (Some (l', l))
-
-

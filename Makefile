@@ -20,9 +20,9 @@ SERVER_FILES := src/ulist_t.mli		\
 		src/ulist_j.ml		\
 		src/services.eliom	\
 		src/tools.eliom		\
+		src/ulist_fs.eliom	\
 		src/category.eliom	\
 		src/menu.eliom		\
-		src/ulist_fs.eliom	\
 		src/ulist_btn.eliom	\
 		src/ulist.eliom		\
 		src/utodo.eliom
