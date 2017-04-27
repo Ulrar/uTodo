@@ -1,0 +1,1 @@
+{"emails":["test@test.fr"],"tasks":[{"uuid":"bf797cc3-c3ab-4a1e-b62c-4a28d97aD3e0","subList":false,"label":"premiere","status":true},{"uuid":"f95fde90-5af9-4582-addf-7686db710040","subList":true,"label":"installs/sub","status":false},{"uuid":"d6fc976e-abfc-4fed-82a1-80b351285bc4","subList":false,"label":"deuxieme","status":true}]}
